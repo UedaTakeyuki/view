@@ -1,1 +1,1 @@
-while true; do ./view; sleep 5m; done
+while true; do ./view.sh; sleep 5m; done

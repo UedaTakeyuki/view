@@ -15,4 +15,4 @@ if [ $# -ne 1 ]; then
   usage
 fi
 
- sed -i "s/^your_view_id=.*/your_view_id=$1/" view
+ sed -i "s/^your_view_id=.*/your_view_id=$1/" view.sh
