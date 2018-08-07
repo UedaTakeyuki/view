@@ -1,5 +1,5 @@
 #!/bin/bash
-your_view_id=
+your_view_id=exweabwo
 
 filepath=/tmp/`date +%Y%m%d%H%M%S`.jpg
 fswebcam $filepath -d /dev/video0 -D 1 -S 20 -r 320x240
