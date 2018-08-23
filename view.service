@@ -3,7 +3,7 @@
 Description=Take photos & Post to the monitor
 After=rc-local.service
 [Service]
-ExecStart=/home/pi/view/loop.sh
+ExecStart=
 Restart=always
 #RestartSec=90
 RestartSec=30
