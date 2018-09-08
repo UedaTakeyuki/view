@@ -1,5 +1,5 @@
 # view
-Take a Camera Image &amp; send to MONITOR server
+Take a Camera Image &amp; send to [MONITOR](https://monitor.uedasoft.com) server
 
 ## install
 download [release](https://github.com/UedaTakeyuki/view/releases)
