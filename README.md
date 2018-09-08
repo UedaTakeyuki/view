@@ -2,7 +2,7 @@
 Take a Camera Image &amp; send to [MONITOR](https://monitor.uedasoft.com) server
 
 ## install
-download [release](https://github.com/UedaTakeyuki/view/releases)
+download from [release](https://github.com/UedaTakeyuki/view/releases)
 
 or 
 
