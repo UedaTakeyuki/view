@@ -103,6 +103,9 @@ In case afte service set as off, you can see followings:
 pi@raspberrypi:~/view-v_1.1.1 $ sudo systemctl status view.service 
 Unit view.service could not be found.
 ```
+### Blog posts
+- [How to make Security camera with 2$ USB Webam & Raspberry Pi](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-security-camera-with-2-usb.html)
+- [What is MONITOR?](https://monitorserviceatelierueda.blogspot.com/p/monitor.html)
 
 ### Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/view/issues) without hesitation! 
