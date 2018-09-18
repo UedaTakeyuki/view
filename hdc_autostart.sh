@@ -22,16 +22,16 @@ usage_exit(){
 }
 
 on(){
-	sed -i "s@^ExecStart=.*@ExecStart=${SCRIPT_DIR}/loop.sh@" ${SCRIPT_DIR}/view.service
-	sudo ln -s ${SCRIPT_DIR}\/view.service /etc/systemd/system/view.service
+	sed -i "s@^ExecStart=.*@ExecStart=${SCRIPT_DIR}/hdc.sh@" ${SCRIPT_DIR}/hdc.service
+	sudo ln -s ${SCRIPT_DIR}\/hdc.service /etc/systemd/system/hdc.service
 	sudo systemctl daemon-reload
-	sudo systemctl enable view.service
-	sudo systemctl start view.service
+	sudo systemctl enable hdc.service
+	sudo systemctl start hdc.service
 }
 
 off(){
-	sudo systemctl stop view.service
-	sudo systemctl disable view.service
+	sudo systemctl stop hdc.service
+	sudo systemctl disable hdc.service
 }
 
 while getopts ":-:" OPT

@@ -16,4 +16,5 @@ if [ $# -ne 1 ]; then
 fi
 
 sed -i "s/^your_view_id=.*/your_view_id=$1/" view.sh
-sed -i "s#^ExecStart=.*#ExecStart=`pwd`/loop.sh#" view.service 
+#sed -i "s#^ExecStart=.*#ExecStart=`pwd`/loop.sh#" view.service 
+#sed -i "s#^ExecStart=.*#ExecStart=`pwd`/hdc.sh#" hdc.service 
