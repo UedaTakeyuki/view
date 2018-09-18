@@ -14,7 +14,7 @@ or
 git clone https://github.com/UedaTakeyuki/view.git
 ```
 
-## setup
+## 2. setup
 Setup environment & install prerequired modules by
 
 ```
@@ -28,7 +28,7 @@ Make sure your view_id on your account of the MONITOR, let's say it was ABCDEF, 
 ./setid.sh ABCDEF
 ```
 
-## test
+## 3. test
 
 ```
 ./view.sh
@@ -59,7 +59,7 @@ In case something wrong, response finished with {"ok":false,"reason":"XXX"}. For
 
 In case, you should make sure if correct view_is was set by setid.sh command.
 
-## setting for automatically run view.sh at 5 minute interval
+## 4. setting for automatically run view.sh at 5 minute interval
 
 You can do it both by setting crontab if you're used to do so, or you can use autostart.sh command as follows:
 
