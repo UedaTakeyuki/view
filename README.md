@@ -5,6 +5,11 @@ Take a Camera Image &amp; send to [MONITOR](https://monitor.uedasoft.com) server
 <img src="https://1.bp.blogspot.com/-d4U3cNRTDnw/W5TUf6tNFZI/AAAAAAAAAmI/ouhvzpklIf0W9Xv2TOC8gv5_cd1ip6GKQCEwYBhgL/s1600/2018-09-09%2B14.35.28.jpg" width="48%">
 <img src="https://2.bp.blogspot.com/-YK5AM3oT8ko/W5TMuSoknsI/AAAAAAAAAls/ZP3Fk2QNLKU86yiXuqkW6Lei1OVcGFA3QCEwYBhgL/s1600/2018-09-09%2B14.37.10.png" width="28%">
 
+This ***view*** module provide 3 features:
+- view.sh: Take Camera Image & send to the [MONITOR](https://monitor.uedasoft.com) server
+- autostart.sh: RUn view.sh at 5 minutes interval.
+- hdc_autostart.sh: Run view.sh with outside event by GPIO, like PIR(Passive Infra-Red) Human detection Sensor.
+
 ## 1. install
 download from [release](https://github.com/UedaTakeyuki/view/releases)
 
@@ -21,14 +26,14 @@ Setup environment & install prerequired modules by
 ./setup.sh 
 ```
 
-## set view_id
+## 3. set view_id
 Make sure your view_id on your account of the MONITOR, let's say it was ABCDEF, set it by setid.sh as
 
 ```
 ./setid.sh ABCDEF
 ```
 
-## 3. test
+## 4. test
 
 ```
 ./view.sh
@@ -59,7 +64,7 @@ In case something wrong, response finished with {"ok":false,"reason":"XXX"}. For
 
 In case, you should make sure if correct view_is was set by setid.sh command.
 
-## 4. setting for automatically run view.sh at 5 minute interval
+## 5. setting for automatically run view.sh at 5 minute interval
 
 You can do it both by setting crontab if you're used to do so, or you can use autostart.sh command as follows:
 
@@ -107,9 +112,11 @@ In case afte service set as off, you can see followings:
 pi@raspberrypi:~/view-v_1.1.1 $ sudo systemctl status view.service 
 Unit view.service could not be found.
 ```
-### Blog posts
+## 6. setting for automatically run view.sh with outside event by GPIO, like PIR(Passive Infra-Red) Human detection Sensor.
+
+## Blog posts
 - [How to make Security camera with 2$ USB Webam & Raspberry Pi](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-security-camera-with-2-usb.html)
 - [What is MONITOR?](https://monitorserviceatelierueda.blogspot.com/p/monitor.html)
 
-### Q&A
+## Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/view/issues) without hesitation! 
