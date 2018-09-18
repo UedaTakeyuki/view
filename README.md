@@ -5,7 +5,7 @@ Take a Camera Image &amp; send to [MONITOR](https://monitor.uedasoft.com) server
 <img src="https://1.bp.blogspot.com/-d4U3cNRTDnw/W5TUf6tNFZI/AAAAAAAAAmI/ouhvzpklIf0W9Xv2TOC8gv5_cd1ip6GKQCEwYBhgL/s1600/2018-09-09%2B14.35.28.jpg" width="48%">
 <img src="https://2.bp.blogspot.com/-YK5AM3oT8ko/W5TMuSoknsI/AAAAAAAAAls/ZP3Fk2QNLKU86yiXuqkW6Lei1OVcGFA3QCEwYBhgL/s1600/2018-09-09%2B14.37.10.png" width="28%">
 
-## install
+## 1. install
 download from [release](https://github.com/UedaTakeyuki/view/releases)
 
 or 
