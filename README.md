@@ -114,6 +114,9 @@ Unit view.service could not be found.
 ```
 ## 6. setting for automatically run view.sh with outside event by GPIO, like PIR(Passive Infra-Red) Human detection Sensor.
 
+Instead of periodical running menttioned above step 5, also run view.sh as action of GPIO event by using ***hdc_autostart.sh***.
+
+
 ## Blog posts
 - [How to make Security camera with 2$ USB Webam & Raspberry Pi](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-security-camera-with-2-usb.html)
 - [What is MONITOR?](https://monitorserviceatelierueda.blogspot.com/p/monitor.html)
