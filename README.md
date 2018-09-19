@@ -114,8 +114,49 @@ Unit view.service could not be found.
 ```
 ## 6. setting for automatically run view.sh with outside event by GPIO, like PIR(Passive Infra-Red) Human detection Sensor.
 
-Instead of periodical running menttioned above step 5, also run view.sh as action of GPIO event by using ***hdc_autostart.sh***.
+Instead of periodical running menttioned above step 5, you can set [GPIO Event trigger](https://github.com/UedaTakeyuki/view/wiki/GPIO-Event-trigger)  by ***hdc.sh***. hdc.sh runs as event loop to wach GPIO level change and kick ***view.sh***. You can also set hdc.sh as service by ***hdc_autostart.sh*** as follows. 
 
+```
+# set autostart on
+./hdc_autostart.sh --on
+
+# set autostart off
+./hdc_autostart.sh --off
+```
+
+You can confirm current status of view.service with following command:
+
+```
+sudo systemctl status hdc.service 
+```
+
+In case hdc.service is running, you can see the log of current status and taking & sending photo as follows:
+```
+pi@raspberrypi:~ $ sudo systemctl status hdc.service 
+● hdc.service - Take photos & Post to the monitor
+   Loaded: loaded (/home/pi/view-v_1.2.1/hdc.service; enabled; vendor preset: enabled)
+   Active: active (running) since Tue 2018-09-18 21:17:28 JST; 13h ago
+ Main PID: 388 (hdc.sh)
+   CGroup: /system.slice/hdc.service
+           ├─ 388 /bin/sh /home/pi/view-v_1.2.1/hdc.sh
+           └─7256 sleep 1s
+
+Sep 19 10:18:06 raspberrypi hdc.sh[388]: Delaying 1 seconds.
+Sep 19 10:18:07 raspberrypi hdc.sh[388]: --- Capturing frame...
+Sep 19 10:18:07 raspberrypi hdc.sh[388]: Skipping 20 frames...
+Sep 19 10:18:08 raspberrypi hdc.sh[388]: Capturing 1 frames...
+Sep 19 10:18:08 raspberrypi hdc.sh[388]: Captured 21 frames in 0.66 seconds. (31 fps)
+Sep 19 10:18:08 raspberrypi hdc.sh[388]: --- Processing captured image...
+Sep 19 10:18:09 raspberrypi hdc.sh[388]: Writing JPEG image to '/tmp/20180919101806.jpg'.
+Sep 19 10:18:09 raspberrypi hdc.sh[388]:   % Total    % Received % Xferd  Average Speed   Ti
+Sep 19 10:18:09 raspberrypi hdc.sh[388]:                                  Dload  Upload   To
+Sep 19 10:18:13 raspberrypi hdc.sh[388]: [474B blob data]```
+
+In case afte service set as off, you can see followings:
+```
+pi@raspberrypi:~/view-v_1.2.1 $ sudo systemctl status hdc.service 
+Unit hdc.service could not be found.
+```
 
 ## Blog posts
 - [How to make Security camera with 2$ USB Webam & Raspberry Pi](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-security-camera-with-2-usb.html)
