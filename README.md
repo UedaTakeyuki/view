@@ -119,6 +119,7 @@ Instead of periodical running menttioned above step 5, also run view.sh as actio
 
 ## Blog posts
 - [How to make Security camera with 2$ USB Webam & Raspberry Pi](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-security-camera-with-2-usb.html)
+- [How to make Security camera with 2$ USB Webam & Beagle Bone Green](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-security-camera-with-2-usb_18.html)
 - [What is MONITOR?](https://monitorserviceatelierueda.blogspot.com/p/monitor.html)
 
 ## Q&A
