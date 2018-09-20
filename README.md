@@ -150,7 +150,8 @@ Sep 19 10:18:08 raspberrypi hdc.sh[388]: --- Processing captured image...
 Sep 19 10:18:09 raspberrypi hdc.sh[388]: Writing JPEG image to '/tmp/20180919101806.jpg'.
 Sep 19 10:18:09 raspberrypi hdc.sh[388]:   % Total    % Received % Xferd  Average Speed   Ti
 Sep 19 10:18:09 raspberrypi hdc.sh[388]:                                  Dload  Upload   To
-Sep 19 10:18:13 raspberrypi hdc.sh[388]: [474B blob data]```
+Sep 19 10:18:13 raspberrypi hdc.sh[388]: [474B blob data]
+```
 
 In case afte service set as off, you can see followings:
 ```
