@@ -157,6 +157,7 @@ In case afte service set as off, you can see followings:
 pi@raspberrypi:~/view-v_1.2.1 $ sudo systemctl status hdc.service 
 Unit hdc.service could not be found.
 ```
+
 ### 6.1 Example usage of ***PIR (Passive Infrared Ray) Human Detection Sensor***
 - [Blog Post](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-human-detection-security.html).
 - [wiki](https://github.com/UedaTakeyuki/view/wiki/PIR-(Passive-Infrared-Ray)-Human-Detection-Sensor)
