@@ -18,6 +18,7 @@ usage_exit(){
 	echo "Usage: $0 [--on]/[--off]" 1>&2
   echo "  [--on]:               Set autostart as ON. " 			1>&2
   echo "  [--off]:              Set autostart as OFF. " 		1>&2
+  echo "  [--status]:           Show current status. " 		  1>&2
   exit 1
 }
 
@@ -34,6 +35,10 @@ off(){
 	sudo systemctl disable hdc.service
 }
 
+status(){
+	sudo systemctl status ${CMD}.service
+}
+
 while getopts ":-:" OPT
 do
   case $OPT in
@@ -44,6 +49,9 @@ do
 								;;
 					off)
 								off
+								;;
+					status)
+								status
 								;;
 				esac
 				;;

@@ -10,7 +10,7 @@ This ***view*** module provide 3 features:
 - autostart.sh: RUn view.sh at 5 minutes interval.
 - hdc_autostart.sh: Run view.sh with outside event by GPIO, like PIR(Passive Infra-Red) Human detection Sensor.
 
-## 1. install
+## 1. Install
 download from [release](https://github.com/UedaTakeyuki/view/releases)
 
 or 
@@ -19,26 +19,39 @@ or
 git clone https://github.com/UedaTakeyuki/view.git
 ```
 
-## 2. setup
-Setup environment & install prerequired modules by
+## 2. 2etup
+Install & setup prerequired modules by
 
 ```
 ./setup.sh 
 ```
 
-## 3. set view_id
-Make sure your view_id on your account of the MONITOR, let's say it was ABCDEF, set it by setid.sh as
+## 3. Get free acount of MONITOR™ service
+By Web Browser, Sign up to MONITOR™ Service at [here](https://monitor3.uedasoft.com/index.mdl.php). Following Quick Start document of [Sign up to Monitor](https://monitor.uedasoft.com/docs/UserGuide/Signup.html) might be informative.
+
+## 4. confirm your view_id on the MONITOR™
+Sign up/in to MONITOR™ and confirm your view_id on the top page as follows:
+<img src="https://monitor.uedasoft.com/docs/UserGuide/pics/2018-08-19.12.39.26.png" width="50%">
+
+## 5. set view_id
+Return back to view on the console, set view_id mentioned above by ***setid.sh*** command.
+Let's say your view_id is axwdjqwy as above picture, set it by setid.sh as
 
 ```
-./setid.sh ABCDEF
+./setid.sh axwdjqwy
 ```
 
-## 4. test
+## 6. test
+
+###Test to take & send photo
+
+After view_id setting is finished, you can take & send photo by following command.
 
 ```
 ./view.sh
 ```
 
+You may see following sequence of log
 In case everything succeeded, expected response is consist of the log of taking photo, sending it, and {"ok":true} as follows:
 
 ```
@@ -56,17 +69,40 @@ Writing JPEG image to '/tmp/20180823190339.jpg'.
 {"ok":true}
 ```
 
+At the last line, ***{"ok":true}*** indicate that take & send photo are successfully finished. By Web Browser, you can see the MONITOR™ display is updated by your taken & sent photo.
+
+<img src="https://monitor.uedasoft.com/docs/UserGuide/pics/2018-09-03.16.32.22.png" width="50%">
+
 In case something wrong, response finished with {"ok":false,"reason":"XXX"}. For Example:
 
 ```
 {"ok":false,"reason":"ViewID not valid"}
 ```
 
-In case, you should make sure if correct view_is was set by setid.sh command.
+In this case, you should make sure if correct view_is was set by setid.sh command.
 
-## 5. setting for automatically run view.sh at 5 minute interval
+### Debug
 
-You can do it both by setting crontab if you're used to do so, or you can use autostart.sh command as follows:
+In case your MONITOR™ display is NOT updated, try view.sh command with test option
+
+```bash:
+./view.sh test
+```
+
+With test option, view.sh doesn't use WebCam. Instead, view.sh send a Rainbow test bars. In case Rainbow bars are shown on your MONITOR™ display, at least network connection between your device and MONITOR™ server is working well. In case still NOT update, please confirm network connection on your device.
+
+Then, try view.sh command again with keep option
+
+```bash:
+./view.sh keep
+```
+
+With keep option, view.sh doesn't remove a photo even after send and keep it on the folder "/tmp" with the filename consist of date & time like as ***/tmp/20181114201302.jpg***.
+So, please check this .jpg file. If this file seems to be broken, also confirm your WebCam device is working well or not.
+
+## 7. setting for automatically run view.sh at 5 minute interval
+
+You can set that view.sh is called repeatedly at 5 minute interval after device is turned on by autostart.sh command as follows:
 
 ```
 # set autostart on
@@ -76,43 +112,39 @@ You can do it both by setting crontab if you're used to do so, or you can use au
 ./autostart.sh --off
 ```
 
-Tecknically speaking, autostart.sh doesn't use crontab, instead, prepare service for interval running of view.sh named view.service .
-You can confirm current status of view.service with following command:
+Tecknically speaking, autostart.sh set timer service of systemctl for view.sh. Incase you are familiar with crontab, it's OK to set view.sh on the cron yourself instead of using autostart command.
+
+You can confirm current status with --status option:
 
 ```
-sudo systemctl status view.service
+./autostart.sh --status
 ```
 
-In case view.service is running, you can see the log of current status and taking & sending photo as follows:
+You may see following sequence:
+
 ```
 pi@raspberrypi:~/view-v_1.1.1 $ sudo systemctl status view.service 
 ● view.service - Take photos & Post to the monitor
-   Loaded: loaded (/home/pi/view-v_1.1.1/view.service; enabled; vendor preset: e
-   Active: active (running) since Thu 2018-08-23 19:07:24 JST; 4min 40s ago
- Main PID: 777 (loop.sh)
-   CGroup: /system.slice/view.service
-           ├─777 /bin/bash /home/pi/view-v_1.1.1/loop.sh
-           └─820 sleep 5m
+   Loaded: loaded (/home/pi/view/view.service; enabled; vendor preset: enabled)
+   Active: activating (auto-restart) since Wed 2018-11-14 20:42:26 JST; 5s ago
+  Process: 7057 ExecStart=/home/pi/view/view.sh (code=exited, status=0/SUCCESS)
+ Main PID: 7057 (code=exited, status=0/SUCCESS)
+● view.timer - Take photos & Post to the monitor
+   Loaded: loaded (/home/pi/view/view.timer; enabled; vendor preset: enabled)
+   Active: active (waiting) since Wed 2018-11-14 18:38:51 JST; 2h 3min ago
 
-Aug 23 19:07:26 raspberrypi loop.sh[777]: --- Capturing frame...
-Aug 23 19:07:26 raspberrypi loop.sh[777]: Skipping 20 frames...
-Aug 23 19:07:28 raspberrypi loop.sh[777]: Capturing 1 frames...
-Aug 23 19:07:28 raspberrypi loop.sh[777]: Captured 21 frames in 1.73 seconds. (1
-Aug 23 19:07:28 raspberrypi loop.sh[777]: --- Processing captured image...
-Aug 23 19:07:29 raspberrypi loop.sh[777]: Writing JPEG image to '/tmp/2018082319
-Aug 23 19:07:29 raspberrypi loop.sh[777]:   % Total    % Received % Xferd  Avera
-Aug 23 19:07:29 raspberrypi loop.sh[777]:                                  Dload
-Aug 23 19:07:53 raspberrypi loop.sh[777]: [2.0K blob data]
-Aug 23 19:07:53 raspberrypi loop.sh[777]:      0
-lines 1-18/18 (END)
+Nov 14 18:38:51 raspberrypi systemd[1]: Started Take photos & Post to the monito
 ```
+
+Then please quit this command by type "q" key.
 
 In case afte service set as off, you can see followings:
 ```
-pi@raspberrypi:~/view-v_1.1.1 $ sudo systemctl status view.service 
 Unit view.service could not be found.
+Unit view.timer could not be found.
 ```
-## 6. setting for automatically run view.sh with outside event by GPIO, like PIR(Passive Infra-Red) Human detection Sensor.
+
+## 8. setting for automatically run view.sh with outside event by GPIO, like PIR(Passive Infra-Red) Human detection Sensor.
 
 Instead of periodical running menttioned above step 5, you can set [GPIO Event trigger](https://github.com/UedaTakeyuki/view/wiki/GPIO-Event-trigger)  by ***hdc.sh***. hdc.sh runs as event loop to wach GPIO level change and kick ***view.sh***. You can also set hdc.sh as service by ***hdc_autostart.sh*** as follows. 
 
@@ -124,51 +156,52 @@ Instead of periodical running menttioned above step 5, you can set [GPIO Event t
 ./hdc_autostart.sh --off
 ```
 
-You can confirm current status of view.service with following command:
+You can confirm current status with --status option:
 
 ```
-sudo systemctl status hdc.service 
+./hdc_autostart.sh --status
 ```
 
-In case hdc.service is running, you can see the log of current status and taking & sending photo as follows:
-```
-pi@raspberrypi:~ $ sudo systemctl status hdc.service 
-● hdc.service - Take photos & Post to the monitor
-   Loaded: loaded (/home/pi/view-v_1.2.1/hdc.service; enabled; vendor preset: enabled)
-   Active: active (running) since Tue 2018-09-18 21:17:28 JST; 13h ago
- Main PID: 388 (hdc.sh)
-   CGroup: /system.slice/hdc.service
-           ├─ 388 /bin/sh /home/pi/view-v_1.2.1/hdc.sh
-           └─7256 sleep 1s
+You may see following sequence:
 
-Sep 19 10:18:06 raspberrypi hdc.sh[388]: Delaying 1 seconds.
-Sep 19 10:18:07 raspberrypi hdc.sh[388]: --- Capturing frame...
-Sep 19 10:18:07 raspberrypi hdc.sh[388]: Skipping 20 frames...
-Sep 19 10:18:08 raspberrypi hdc.sh[388]: Capturing 1 frames...
-Sep 19 10:18:08 raspberrypi hdc.sh[388]: Captured 21 frames in 0.66 seconds. (31 fps)
-Sep 19 10:18:08 raspberrypi hdc.sh[388]: --- Processing captured image...
-Sep 19 10:18:09 raspberrypi hdc.sh[388]: Writing JPEG image to '/tmp/20180919101806.jpg'.
-Sep 19 10:18:09 raspberrypi hdc.sh[388]:   % Total    % Received % Xferd  Average Speed   Ti
-Sep 19 10:18:09 raspberrypi hdc.sh[388]:                                  Dload  Upload   To
-Sep 19 10:18:13 raspberrypi hdc.sh[388]: [474B blob data]
+```
+● view.service - Take photos & Post to the monitor
+   Loaded: loaded (/home/pi/view/view.service; enabled; vendor preset: enabled)
+   Active: activating (auto-restart) since Wed 2018-11-14 21:01:52 JST; 25s ago
+  Process: 7947 ExecStart=/home/pi/view/view.sh (code=exited, status=0/SUCCESS)
+ Main PID: 7947 (code=exited, status=0/SUCCESS)
+   CGroup: /system.slice/view.service
 ```
 
 In case afte service set as off, you can see followings:
 ```
-pi@raspberrypi:~/view-v_1.2.1 $ sudo systemctl status hdc.service 
-Unit hdc.service could not be found.
+pi@raspberrypi:~/view $ ./hdc_autostart.sh --status
+Unit view.service could not be found.
 ```
 
-### 6.1 Example usage of PIR (Passive Infrared Ray) Human Detection Sensor
+### 8.1 Example usage of PIR (Passive Infrared Ray) Human Detection Sensor
 - [Blog Post](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-human-detection-security.html).
 - [wiki](https://github.com/UedaTakeyuki/view/wiki/PIR-(Passive-Infrared-Ray)-Human-Detection-Sensor)
 
 
-## Blog posts
+## 9. Blog posts
+
+#### for version 1.2.0 or later
+- [How to make Human Detection Security camera with under 1$ Human Detection Senser, 2$ USB Webam & Raspberry Pi](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-human-detection-security.html)
+
+#### for version 1.1.1 or later
 - [How to make Security camera with 2$ USB Webam & Raspberry Pi](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-security-camera-with-2-usb.html)
-- [How to make Security camera with 2$ USB Webam & Beagle Bone Green](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-security-camera-with-2-usb_18.html)
+- [How to make Security camera with 2$ USB Webam & Beagle Bone Green 
+](https://monitorserviceatelierueda.blogspot.com/2018/09/how-to-make-security-camera-with-2-usb_18.html)
+
+#### for general
 - [What is MONITOR?](https://monitorserviceatelierueda.blogspot.com/p/monitor.html)
 
-## Q&A
+## 10. Q&A
 Any questions, suggestions, reports are welcome! Please make [issue](https://github.com/UedaTakeyuki/view/issues) without hesitation! 
 
+## 11. history
+- 1.0.0  2018.08.07  first version self-forked from [read.py](https://github.com/UedaTakeyuki/slider/blob/master/read.py).
+- 1.1.1  2018.08.23  Stable version
+- 1.2.0  2018.09.18  Add hdc (human detection camera)
+- 1.3.0  2018.11.14  Add -test and -keep option to view.sh, --status option to autstart.sh

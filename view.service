@@ -1,7 +1,7 @@
-
 [Unit]
 Description=Take photos & Post to the monitor
 After=rc-local.service
+
 [Service]
 ExecStart=
 Restart=always
@@ -9,6 +9,7 @@ Restart=always
 RestartSec=30
 Type=simple
 PIDFile=/var/run/view.pid
+
 [Install]
 WantedBy=multi-user.target
 

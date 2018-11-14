@@ -1,0 +1,11 @@
+[Unit]
+Description=Take photos & Post to the monitor
+
+[Timer]
+OnBootSec=10s
+OnUnitActiveSec=5min
+Unit=view.service
+
+[Install]
+WantedBy=multi-user.target
+
