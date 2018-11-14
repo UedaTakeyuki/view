@@ -31,7 +31,8 @@ By Web Browser, Sign up to MONITOR™ Service at [here](https://monitor3.uedasof
 
 ## 4. confirm your view_id on the MONITOR™
 Sign up/in to MONITOR™ and confirm your view_id on the top page as follows:
-<img src="https://monitor.uedasoft.com/docs/UserGuide/pics/2018-08-19.12.39.26.png" width="30%">
+
+<img src="https://monitor.uedasoft.com/docs/UserGuide/pics/2018-08-19.12.39.26.png" width="28%">
 
 ## 5. set view_id
 Return back to view on the console, set view_id mentioned above by ***setid.sh*** command.
@@ -71,7 +72,7 @@ Writing JPEG image to '/tmp/20180823190339.jpg'.
 
 At the last line, ***{"ok":true}*** indicate that take & send photo are successfully finished. By Web Browser, you can see the MONITOR™ display is updated by your taken & sent photo.
 
-<img src="https://monitor.uedasoft.com/docs/UserGuide/pics/2018-09-03.16.32.22.png" width="30%">
+<img src="https://monitor.uedasoft.com/docs/UserGuide/pics/2018-09-03.16.32.22.png" width="28%">
 
 In case something wrong, response finished with {"ok":false,"reason":"XXX"}. For Example:
 
