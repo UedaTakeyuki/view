@@ -19,7 +19,7 @@ or
 git clone https://github.com/UedaTakeyuki/view.git
 ```
 
-## 2. 2etup
+## 2. Setup
 Install & setup prerequired modules by
 
 ```
