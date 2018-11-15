@@ -19,7 +19,7 @@ or
 git clone https://github.com/UedaTakeyuki/view.git
 ```
 
-## 2. Setup
+## 2. 2etup
 Install & setup prerequired modules by
 
 ```
@@ -80,7 +80,7 @@ In case something wrong, response finished with {"ok":false,"reason":"XXX"}. For
 {"ok":false,"reason":"ViewID not valid"}
 ```
 
-In this case, you should make sure if correct view_id was set by setid.sh command.
+In this case, you should make sure if correct view_is was set by setid.sh command.
 
 ### Debug
 
@@ -137,7 +137,7 @@ pi@raspberrypi:~/view-v_1.1.1 $ sudo systemctl status view.service
 Nov 14 18:38:51 raspberrypi systemd[1]: Started Take photos & Post to the monito
 ```
 
-Then please quit this command by type "q" key.
+In case waiting key input, type "q" key.
 
 In case afte service set as off, you can see followings:
 ```
