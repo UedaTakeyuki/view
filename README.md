@@ -80,7 +80,7 @@ In case something wrong, response finished with {"ok":false,"reason":"XXX"}. For
 {"ok":false,"reason":"ViewID not valid"}
 ```
 
-In this case, you should make sure if correct view_is was set by setid.sh command.
+In this case, you should make sure if correct view_id was set by setid.sh command.
 
 ### Debug
 
