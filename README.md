@@ -206,3 +206,4 @@ Any questions, suggestions, reports are welcome! Please make [issue](https://git
 - 1.1.1  2018.08.23  Stable version
 - 1.2.0  2018.09.18  Add hdc (human detection camera)
 - 1.3.0  2018.11.14  Add -test and -keep option to view.sh, --status option to autstart.sh
+- 1.3.1  2018.11.25  fix: view.sh is called at 30 sec interval ignoring timer.

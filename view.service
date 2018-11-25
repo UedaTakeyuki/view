@@ -4,9 +4,9 @@ After=rc-local.service
 
 [Service]
 ExecStart=
-Restart=always
+#Restart=always
 #RestartSec=90
-RestartSec=30
+#RestartSec=30
 Type=simple
 PIDFile=/var/run/view.pid
 
