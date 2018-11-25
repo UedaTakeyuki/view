@@ -137,7 +137,7 @@ pi@raspberrypi:~/view-v_1.1.1 $ sudo systemctl status view.service
 Nov 14 18:38:51 raspberrypi systemd[1]: Started Take photos & Post to the monito
 ```
 
-Then please quit this command by type "q" key.
+In case waiting key input, type "q" key.
 
 In case afte service set as off, you can see followings:
 ```
